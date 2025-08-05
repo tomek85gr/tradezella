@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -22,12 +22,12 @@ import {
   Calendar,
   Euro,
   Filter,
-  Clock,
+
   RefreshCw
 } from "lucide-react";
 
 export default function TradezellaDash() {
-  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const [sidebarCollapsed] = useState(false);
   const [showPaywall, setShowPaywall] = useState(false);
 
   return (
@@ -321,7 +321,7 @@ export default function TradezellaDash() {
                 </div>
                 <div className="text-center">
                   <div className="flex items-center justify-center space-x-2 mb-2">
-                    <span className="text-sm text-gray-600">Today's score</span>
+                    <span className="text-sm text-gray-600">Today&apos;s score</span>
                     <Info className="w-4 h-4 text-gray-400" />
                   </div>
                   <div className="text-2xl font-bold">0/5</div>
@@ -420,10 +420,6 @@ export default function TradezellaDash() {
           onSubscribe={(planName) => {
             console.log(`Subscribing to ${planName}`);
             // Handle subscription logic here without alert
-            setShowPaywall(false);
-          }}
-          onDemo={() => {
-            console.log("Demo already active");
             setShowPaywall(false);
           }}
         />

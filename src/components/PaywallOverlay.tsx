@@ -9,10 +9,9 @@ import { X } from "lucide-react";
 interface PaywallOverlayProps {
   onClose: () => void;
   onSubscribe?: (planName: string) => void;
-  onDemo?: () => void;
 }
 
-export default function PaywallOverlay({ onClose, onSubscribe, onDemo }: PaywallOverlayProps) {
+export default function PaywallOverlay({ onClose, onSubscribe }: PaywallOverlayProps) {
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>('yearly');
   const [selectedPlan, setSelectedPlan] = useState('Basic');
   const [currentSlogan, setCurrentSlogan] = useState(0);
@@ -30,7 +29,7 @@ export default function PaywallOverlay({ onClose, onSubscribe, onDemo }: Paywall
       setCurrentSlogan((prev) => (prev + 1) % slogans.length);
     }, 3000);
     return () => clearInterval(interval);
-  }, []);
+  }, [slogans.length]);
 
   const plans = [
     {

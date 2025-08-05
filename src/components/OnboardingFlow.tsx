@@ -4,8 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
-import { Badge } from "@/components/ui/badge";
+
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import SocialProofFooter from "./SocialProofFooter";
@@ -33,12 +32,7 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
     goals: [],
   });
 
-  const steps = [
-    { id: 1, title: "Trading Level", completed: data.tradingLevel !== "" },
-    { id: 2, title: "Primary Broker", completed: data.broker !== "" },
-    { id: 3, title: "Securities", completed: data.securities.length > 0 },
-    { id: 4, title: "Goals", completed: data.goals.length > 0 },
-  ];
+
 
   const progress = (currentStep / 4) * 100;
 

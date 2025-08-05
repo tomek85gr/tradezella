@@ -1,10 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Badge } from "@/components/ui/badge";
+
 
 export default function SocialProofFooter() {
-  const [currentSlogan, setCurrentSlogan] = useState(0);
+
 
   const slogans = [
     "Top traders don't guess, they track",
@@ -12,13 +12,7 @@ export default function SocialProofFooter() {
     "Every trade you don't journal is a lesson lost"
   ];
 
-  // Animate slogans
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlogan((prev) => (prev + 1) % slogans.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
+
   return (
     <div className="bg-gray-50 border-t border-gray-200 py-8">
       <div className="max-w-4xl mx-auto px-6">
