@@ -146,7 +146,7 @@ export default function Paywall({ tradingLevel, onSubscribe, onDemo, onLogout }:
             </h1>
             
             {/* Billing Toggle */}
-            <div className="flex items-center justify-center space-x-2 mb-4">
+            <div className="flex items-center justify-center space-x-2 mb-8">
               <Button
                 variant={billingCycle === 'monthly' ? 'default' : 'outline'}
                 size="sm"

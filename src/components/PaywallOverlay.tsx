@@ -12,7 +12,7 @@ interface PaywallOverlayProps {
 }
 
 export default function PaywallOverlay({ onClose, onSubscribe }: PaywallOverlayProps) {
-  const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>('yearly');
+  const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>('monthly');
   const [selectedPlan, setSelectedPlan] = useState('Basic');
   const [currentSlogan, setCurrentSlogan] = useState(0);
 
