@@ -29,6 +29,7 @@ Reinforce trust and value **at the paywall** and in key screens to nudge convers
   - _“Top traders don’t guess. They track.”_
   - _“60% of TradeZella users hit profitability in 6 months.”_
 - Show 2-3 **testimonial quotes** from successful traders, optimized for visibility
+- Show reviews from 6 figure dat traders that are using our platform
 
 ---
 
@@ -36,7 +37,6 @@ Reinforce trust and value **at the paywall** and in key screens to nudge convers
 
 - Quick Win: Add **trust indicators** (reviews + “recommended by”) in the footer
 - Mid-term: Add **impact copy** and **testimonials** near the plan selection/paywall
-- These experiment could run in combination and together with the first experiment of showing a Demo to users.
 
 ---
 

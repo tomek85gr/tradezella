@@ -12,7 +12,7 @@ By offering a clear alternative import method (CSV/screenshot) when a user selec
 
 -   **Confidence**: 9/10
 
--   **Effort**: 2/10
+-   **Effort**: 1/10
 
 🎯 Problem Addressed
 --------------------
