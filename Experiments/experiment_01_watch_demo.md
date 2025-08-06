@@ -2,7 +2,7 @@
 
 ## 🎯 Objective
 Increase the **Sign-Up → Subscription Conversion Rate** by reducing friction and improving perceived value. 
-Main beneficiaries newbies but this can help every lead that hesitates to commit..
+Main beneficiaries are all the new accounts but we could see higher impact for newbies that hesitate to commit..
 
 ## 🎯 Why
 Competitors offer either Free plans or tier based free plans (number of traders imported). It's essential to listen to our customers and offer a way to explore / try before paying. 
@@ -14,19 +14,19 @@ Allowing customers to explore could be one of the fastest ways to validate if Fr
 ## 🚀 Experiment 1: Watch Demo Access
 
 ### Hypothesis
-Giving new users the ability to **watch a demo** or **experience the app** before hitting the paywall will increase conversion by showing the great UX, functionality and clear onboarding of how to create habitual Aha! moments. Add your traders, add notes etc. 
+Giving new users the ability to **watch a demo** or **experience the app** before hitting the paywall will increase conversion by showing the great UX, functionality convincing why the App is worth paying for! The demo account will have a paywall on the most prominent CTAs like Add Trades etc.
 
 ### RICE Score
 - **Reach**: 32000
 - **Impact**: 10/10
 - **Confidence**: 10/10
-- **Effort**: 6/10 Medium (Demo account already exists)
+- **Effort**: 4/10 Medium (Demo account already exists)
 
 ---
 
 ## 🔍 Problem Addressed
 - New/inexperienced traders don't perceive the immediate value of a trading journal.
-- They hesitate to pay for something they haven't seen.
+- They hesitate to pay for something they haven't seen in action.
 - Current paywall is a hard blocker with no product interaction or "aha moment".
 
 ---
@@ -34,8 +34,7 @@ Giving new users the ability to **watch a demo** or **experience the app** befor
 ## 💡 Solution Hypothesis
 Introduce a **“Watch Demo” / “Experience Before You Buy” flow**:
 - Demo mode of core features (journaling, AI analysis)
-- Testimonials & success stories of beginners
-- Default recommendation of beginner package
+- Subtle CTAs to remove the current hard blocker
 - Exploration of key screens before committing
 
 ---
@@ -54,7 +53,7 @@ This shows the biggest upside lies in converting **new and somewhat inexperience
 
 ## 📈 Primary Metric
 - **Conversion Rate**: Sign-Up → Subscription
-- **Conversion Rate from demo**: Sign-Up → Demo Paywall → Subscription
+- **Conversion Rate from demo account**: Sign-Up → Watched Demo → Subscription
 
 ---
 
@@ -82,13 +81,11 @@ This shows the biggest upside lies in converting **new and somewhat inexperience
 
 ---
 
-## 🧠 Notes / concerns
-- The testimonials, review score, Slogans can be tested separately to reduce the scope effort. (cannot run at the same time)
+## 🧠 Notes / Risks
+- The testimonials, review score, Slogans can be tested separately as a broader social proof experiment. This will reduce the scope and effort. (cannot run at the same time)
 - The email recovery flow can be tested as a separate experiment to reduce the scope effort.(can run at the same time)
-- It's possible that we could identify if the paywall is a hard block by offering a 14 days money back guarantee. 
-- Freemium requires more effort as 0 auth payments and/or license limitations needs to be coded
-- Designed to maximize value-per-effort by focusing on beginner conversion.
-- Will serve as foundation for future personalization or segmentation efforts.
-
+- It's possible that we could identify if the paywall is a hard block by offering a 14 days money back guarantee.
+- It's possible that we could show a video instead of the demo account and still have similar results. 
+- There's many ways of removing the blocker...
 ---
 

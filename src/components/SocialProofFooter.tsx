@@ -14,7 +14,7 @@ export default function SocialProofFooter() {
 
 
   return (
-    <div className="bg-gray-50 border-t border-gray-200 py-8">
+    <div className="bg-gray-50 border-t border-gray-200 py-8 relative z-10">
       <div className="max-w-4xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="text-center">
@@ -43,7 +43,6 @@ export default function SocialProofFooter() {
           </div>
           <div className="text-center">
             <div className="flex items-center justify-center mb-2">
-
               <span className="text-lg font-semibold">50,000+</span>
             </div>
             <p className="text-sm text-gray-600">Active traders</p>
@@ -105,12 +104,13 @@ export default function SocialProofFooter() {
                 ].map((person, i) => (
                   <div
                     key={i}
-                    className={`w-6 h-6 rounded-full border-2 border-white ${person.color} relative group cursor-pointer overflow-hidden hover:z-10`}
+                    className={`w-6 h-6 rounded-full border-2 border-white ${person.color} relative cursor-pointer overflow-hidden hover:z-10`}
                     title={person.name}
                   >
                     <img 
                       src={person.image} 
-                      alt={person.name}
+                      alt={`${person.name} - TradeZella user`}
+                      title={person.name}
                       className="w-full h-full object-cover"
                       onError={(e) => {
                         // Fallback to a colored background if image fails to load
@@ -120,12 +120,6 @@ export default function SocialProofFooter() {
                         target.parentElement!.innerHTML = `<span class="text-xs font-semibold text-gray-600">${person.name.charAt(0)}</span>`;
                       }}
                     />
-                    
-                    {/* Tooltip */}
-                    <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-all duration-200 whitespace-nowrap z-20 pointer-events-none">
-                      {person.name}
-                      <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900"></div>
-                    </div>
                   </div>
                 ))}
               </div>
