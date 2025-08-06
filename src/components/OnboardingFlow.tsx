@@ -263,8 +263,8 @@ function BrokerStep({ data, setData }: { data: OnboardingData; setData: (data: O
               className="w-full"
               value={data.customBroker}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => setData({ ...data, customBroker: e.target.value })}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' && data.customBroker.trim()) {
+              onBlur={() => {
+                if (data.customBroker.trim()) {
                   setHasSubmittedCustomBroker(true);
                 }
               }}
