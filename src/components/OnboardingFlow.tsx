@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Input } from "@/components/ui/input";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import SocialProofFooter from "./SocialProofFooter";
 import { useUrlParams } from "@/hooks/useUrlParams";
@@ -14,6 +15,7 @@ import TradingLevelIcon from "./TradingLevelIcons";
 interface OnboardingData {
   tradingLevel: string;
   broker: string;
+  customBroker: string;
   securities: string[];
   goals: string[];
 }
@@ -28,6 +30,7 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
   const [data, setData] = useState<OnboardingData>({
     tradingLevel: "",
     broker: "",
+    customBroker: "",
     securities: [],
     goals: [],
   });
@@ -91,37 +94,42 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
       <div className="bg-white border-b border-gray-200 px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-4">
-            <Image
-              src="/tradezella_logo.png"
-              alt="Tradezella Logo"
-              width={120}
-              height={47}
-              className="w-30 h-12"
-              style={{ width: '120px', height: 'auto' }}
-            />
-            <div className="hidden sm:block flex items-center">
-              <p className="text-sm text-gray-500 font-light italic pt-1.5">We help traders become profitable</p>
+            <div className="flex flex-col">
+              <Image
+                src="/tradezella_logo.png"
+                alt="Tradezella Logo"
+                width={120}
+                height={47}
+                className="w-30 h-12"
+                style={{ width: '120px', height: 'auto' }}
+              />
+              {/* {hasParam('exp_add_social_proof_signup', 'true') && (
+                <p className="text-xs text-gray-500 font-light italic mt-1">We help traders become profitable</p>
+              )} */}
             </div>
+          </div>
+          
+          {/* Progress Bar and Back Button in Center */}
+          <div className="flex-1 max-w-md mx-8 flex items-center space-x-4">
             {currentStep > 1 && (
               <Button variant="ghost" size="sm" onClick={handleBack}>
                 <ArrowLeft className="h-4 w-4" />
               </Button>
             )}
-            <div className="flex-1 max-w-md">
+            <div className="flex-1">
+              <div className="w-full bg-gray-200 rounded-full h-2">
+                <div 
+                  className="h-2 bg-gradient-to-r from-[#4332EB] to-[#6853B5] rounded-full transition-all duration-300"
+                  style={{ width: `${progress}%` }}
+                ></div>
+              </div>
             </div>
           </div>
+          
           <Button variant="ghost" onClick={handleLogout}>
             Log out
           </Button>
         </div>
-      </div>
-
-      {/* Progress Bar Border Separator */}
-      <div className="border-b border-gray-200">
-        <div 
-          className="h-1 bg-gradient-to-r from-[#4332EB] to-[#4332EB] transition-all duration-300"
-          style={{ width: `${progress}%` }}
-        ></div>
       </div>
 
       {/* Main Content */}
@@ -129,17 +137,7 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
         {renderStep()}
         
         {/* Navigation Buttons */}
-        <div className="mt-8 flex justify-between items-center">
-          <Button
-            variant="outline"
-            onClick={handleBack}
-            disabled={currentStep === 1}
-            className="flex items-center space-x-2"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Back
-          </Button>
-          
+        <div className="mt-8 flex justify-center items-center">
           <Button
             onClick={handleNext}
             disabled={!canContinue()}
@@ -210,6 +208,8 @@ function TradingLevelStep({ data, setData }: { data: OnboardingData; setData: (d
 
 // Step 2: Primary Broker
 function BrokerStep({ data, setData }: { data: OnboardingData; setData: (data: OnboardingData) => void }) {
+  const { hasParam } = useUrlParams();
+  const [hasSubmittedCustomBroker, setHasSubmittedCustomBroker] = useState(false);
   const brokers = [
     "Interactive Brokers",
     "TD Ameritrade",
@@ -254,6 +254,31 @@ function BrokerStep({ data, setData }: { data: OnboardingData; setData: (data: O
             ))}
           </SelectContent>
         </Select>
+        
+        {/* Conditional input for "Other" broker */}
+        {data.broker === "Other" && (
+          <div className="mt-4">
+            <Input
+              placeholder="Enter your broker name"
+              className="w-full"
+              value={data.customBroker}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setData({ ...data, customBroker: e.target.value })}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' && data.customBroker.trim()) {
+                  setHasSubmittedCustomBroker(true);
+                }
+              }}
+            />
+            {hasSubmittedCustomBroker && (
+              <p className="text-xs text-gray-500 mt-2 text-center">
+                {hasParam('exp_growth_unsupported_broker_reassurance', 'true') 
+                  ? "Sounds good! You can add your trades via a screenshot or CSV import."
+                  : "This broker is not supported."
+                }
+              </p>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

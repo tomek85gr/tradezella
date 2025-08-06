@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useUrlParams } from "@/hooks/useUrlParams";
+import Image from "next/image";
 
 interface PaywallProps {
   tradingLevel?: string;
@@ -30,21 +31,21 @@ export default function Paywall({ tradingLevel, onSubscribe, onDemo, onLogout }:
   const [selectedPlan, setSelectedPlan] = useState(getDefaultPlan());
 
   const plans = [
-    {
-      name: "Demo",
-      monthlyPrice: 0,
-      yearlyPrice: 0,
-      yearlySavings: 0,
-      description: "Not ready yet? Try it free for 7 days!",
-      features: [
-        { text: "Fully functional application for demo purposes", included: true },
-        { text: "View only", included: true },
-        { text: "Access valid for 7 days", included: true },
-      ],
-      recommended: false,
-      cta: "Access demo",
-      isDemo: true
-    },
+    // {
+    //   name: "Demo",
+    //   monthlyPrice: 0,
+    //   yearlyPrice: 0,
+    //   yearlySavings: 0,
+    //   description: "Not ready yet? Try it free for 7 days!",
+    //   features: [
+    //     { text: "Fully functional application for demo purposes", included: true },
+    //     { text: "View only", included: true },
+    //     { text: "Access valid for 7 days", included: true },
+    //   ],
+    //   recommended: false,
+    //   cta: "Access demo",
+    //   isDemo: true
+    // },
     {
       name: "Basic",
       monthlyPrice: 24,
@@ -97,47 +98,36 @@ export default function Paywall({ tradingLevel, onSubscribe, onDemo, onLogout }:
 
   return (
     <div className="min-h-screen relative">
-      {/* Blurred SaaS Background */}
-      <div className="absolute inset-0 blur-md opacity-70 bg-gradient-to-br from-[#4332EB]/30 to-[#6853B5]/20">
+      {/* SaaS Background with Color Mix */}
+      <div className="absolute inset-0" style={{ backgroundColor: 'color-mix(in oklab, var(--color-white) 10%, transparent)' }}>
         <div className="min-h-screen bg-gray-50">
-          {/* Simulated SaaS dashboard elements */}
-          <div className="p-6">
-            {/* Header */}
-            <div className="h-12 bg-[#4332EB]/20 rounded-lg mb-6 flex items-center px-4">
-              <div className="w-8 h-8 bg-[#4332EB]/40 rounded mr-3"></div>
-              <div className="h-4 bg-[#4332EB]/30 rounded w-32"></div>
-            </div>
-            
-            {/* Stats Cards */}
-            <div className="grid grid-cols-3 gap-4 mb-6">
-              <div className="h-24 bg-[#6853B5]/20 rounded-lg p-4">
-                <div className="h-3 bg-[#6853B5]/40 rounded mb-2"></div>
-                <div className="h-6 bg-[#6853B5]/30 rounded w-16"></div>
-              </div>
-              <div className="h-24 bg-[#4332EB]/20 rounded-lg p-4">
-                <div className="h-3 bg-[#4332EB]/40 rounded mb-2"></div>
-                <div className="h-6 bg-[#4332EB]/30 rounded w-20"></div>
-              </div>
-              <div className="h-24 bg-[#6853B5]/20 rounded-lg p-4">
-                <div className="h-3 bg-[#6853B5]/40 rounded mb-2"></div>
-                <div className="h-6 bg-[#6853B5]/30 rounded w-14"></div>
-              </div>
-            </div>
-            
-            {/* Main Content Area */}
-            <div className="h-80 bg-gradient-to-br from-[#4332EB]/10 to-[#6853B5]/10 rounded-lg p-6">
-              <div className="h-4 bg-[#4332EB]/30 rounded mb-4 w-48"></div>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="h-32 bg-[#4332EB]/20 rounded"></div>
-                <div className="h-32 bg-[#6853B5]/20 rounded"></div>
-              </div>
-            </div>
-          </div>
+          {/* Real SaaS Background Image */}
+          <Image 
+            src="/saas_bg_image.png" 
+            alt="SaaS Background" 
+            fill
+            className="object-cover"
+            priority
+          />
         </div>
       </div>
       
       {/* Paywall Overlay */}
       <div className="relative z-10 min-h-screen bg-white/70 backdrop-blur-md flex flex-col">
+        {/* Close Button */}
+        <div className="absolute top-6 right-6 z-20">
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={onDemo}
+            className="w-8 h-8 rounded-full bg-white/80 backdrop-blur-sm hover:bg-white/90"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </Button>
+        </div>
+        
         {/* Main Content */}
         <div className="flex-1 max-w-6xl mx-auto px-6 py-8 pb-4 bg-transparent">
           <div className="text-center">
@@ -175,11 +165,11 @@ export default function Paywall({ tradingLevel, onSubscribe, onDemo, onLogout }:
             )}
 
             {/* Pricing Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-4">
               {plans.map((plan) => (
                 <Card
                   key={plan.name}
-                  className={`relative cursor-pointer transition-all hover:shadow-lg bg-white/80 backdrop-blur-sm ${
+                  className={`relative cursor-pointer transition-all hover:shadow-lg bg-white/90 backdrop-blur-sm ${
                     selectedPlan === plan.name
                       ? "border-[#4332EB] bg-[#4332EB]/10"
                       : "border-gray-200 hover:border-[#4332EB]/50"
@@ -194,40 +184,30 @@ export default function Paywall({ tradingLevel, onSubscribe, onDemo, onLogout }:
                       </Badge>
                     </div>
                   )}
-                  <CardContent className="p-6">
+                  <CardContent className="px-6 py-4">
                     <div className="text-center mb-4">
                       <h3 className="text-2xl font-bold text-gray-900 mb-2">{plan.name}</h3>
                       <p className="text-sm text-gray-600 mb-4">{plan.description}</p>
-                      {billingCycle === 'yearly' && !plan.isDemo && (
+                      {billingCycle === 'yearly' && (
                         <p className="text-xs text-gray-500 mb-2">
                           You Saved ${plan.yearlySavings} if paid ${plan.yearlyPrice} annually.
                         </p>
                       )}
                       <div className="text-3xl font-bold text-[#4332EB] mb-6">
-                        {plan.isDemo ? (
-                          <span className="text-green-600">FREE</span>
-                        ) : (
-                          `$${billingCycle === 'monthly' ? plan.monthlyPrice : (plan.yearlyPrice / 12).toFixed(2)}/mo`
-                        )}
+                        ${billingCycle === 'monthly' ? plan.monthlyPrice : (plan.yearlyPrice / 12).toFixed(2)}/mo
                       </div>
                     </div>
                     
                     {/* Button moved above features */}
                     <Button
                       className={`w-full mb-6 ${
-                        plan.isDemo
-                          ? 'bg-green-600 hover:bg-green-700 text-white'
-                          : selectedPlan === plan.name
+                        selectedPlan === plan.name
                           ? 'bg-[#4332EB] hover:bg-[#3a2bd4]'
                           : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                       }`}
                       onClick={(e) => {
                         e.stopPropagation();
-                        if (plan.isDemo) {
-                          onDemo?.();
-                        } else {
-                          handleSubscribe();
-                        }
+                        handleSubscribe();
                       }}
                     >
                       {plan.cta}
@@ -258,8 +238,15 @@ export default function Paywall({ tradingLevel, onSubscribe, onDemo, onLogout }:
           </div>
         </div>
         
-        {/* Logout Button */}
-        <div className="flex justify-center pb-8">
+        {/* Action Buttons */}
+        <div className="flex flex-col items-center space-y-4 pb-8">
+          <Button
+            variant="outline"
+            onClick={onDemo}
+            className="text-gray-600 hover:text-gray-800 border-gray-300 hover:border-gray-400"
+          >
+            See it in action first
+          </Button>
           <Button
             variant="ghost"
             onClick={onLogout}

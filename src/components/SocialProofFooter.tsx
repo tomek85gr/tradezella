@@ -43,12 +43,7 @@ export default function SocialProofFooter() {
           </div>
           <div className="text-center">
             <div className="flex items-center justify-center mb-2">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-users h-5 w-5 text-[#4332EB] mr-2" aria-hidden="true">
-                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
-                <path d="M16 3.128a4 4 0 0 1 0 7.744"></path>
-                <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
-                <circle cx="9" cy="7" r="4"></circle>
-              </svg>
+
               <span className="text-lg font-semibold">50,000+</span>
             </div>
             <p className="text-sm text-gray-600">Active traders</p>
@@ -77,22 +72,57 @@ export default function SocialProofFooter() {
               <span className="text-sm font-semibold text-gray-900">Trusted by:</span>
               <div className="flex -space-x-1">
                 {[
-                  { emoji: '👨', name: 'John Doe', color: '' },
-                  { emoji: '👩', name: 'Jane Doe', color: 'ring-2 ring-[#4332EB]' },
-                  { emoji: '👨', name: 'John Smith', color: '' },
-                  { emoji: '👨', name: 'Mike Johnson', color: '' },
-                  { emoji: '👨', name: 'David Wilson', color: '' },
-                  { emoji: '👤', name: 'Alex Brown', color: '' }
+                  { 
+                    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face', 
+                    name: 'John Doe', 
+                    color: '' 
+                  },
+                  { 
+                    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face', 
+                    name: 'Jane Doe', 
+                    color: '' 
+                  },
+                  { 
+                    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face', 
+                    name: 'John Smith', 
+                    color: '' 
+                  },
+                  { 
+                    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face', 
+                    name: 'Mike Johnson', 
+                    color: '' 
+                  },
+                  { 
+                    image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&h=100&fit=crop&crop=face', 
+                    name: 'David Wilson', 
+                    color: '' 
+                  },
+                  { 
+                    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face', 
+                    name: 'Alex Brown', 
+                    color: '' 
+                  }
                 ].map((person, i) => (
                   <div
                     key={i}
-                    className={`w-6 h-6 rounded-full border-2 border-white bg-gray-300 flex items-center justify-center text-xs font-semibold text-gray-600 ${person.color} relative group cursor-pointer`}
+                    className={`w-6 h-6 rounded-full border-2 border-white ${person.color} relative group cursor-pointer overflow-hidden hover:z-10`}
                     title={person.name}
                   >
-                    <span>{person.emoji}</span>
+                    <img 
+                      src={person.image} 
+                      alt={person.name}
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        // Fallback to a colored background if image fails to load
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                        target.parentElement!.style.backgroundColor = '#e5e7eb';
+                        target.parentElement!.innerHTML = `<span class="text-xs font-semibold text-gray-600">${person.name.charAt(0)}</span>`;
+                      }}
+                    />
                     
                     {/* Tooltip */}
-                    <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap z-10">
+                    <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-all duration-200 whitespace-nowrap z-20 pointer-events-none">
                       {person.name}
                       <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900"></div>
                     </div>

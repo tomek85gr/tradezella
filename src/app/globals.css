@@ -126,4 +126,16 @@
   .cursor-pointer {
     cursor: pointer;
   }
+  
+  /* Ensure tooltips work */
+  .group:hover .group-hover\:opacity-100 {
+    opacity: 1 !important;
+  }
+  
+  /* Color mix support for modern browsers */
+  @supports (color: color-mix(in lab, red, red)) {
+    .bg-white\/70 {
+      background-color: color-mix(in oklab, var(--color-white) 10%, transparent);
+    }
+  }
 }
