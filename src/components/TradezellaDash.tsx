@@ -133,9 +133,9 @@ export default function TradezellaDash() {
         {/* Main Content Area */}
         <div className="p-6 space-y-6">
           {/* Demo Banner */}
-          <div className="bg-orange-50 border border-orange-200 rounded-lg p-4 flex items-center justify-between">
+          <div className="bg-[#6853B5]/5 border border-[#6853B5]/20 rounded-lg p-4 flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <Badge className="bg-orange-500 text-white">DEMO</Badge>
+              <Badge className="bg-[#6853B5] text-white">DEMO</Badge>
               <span className="text-gray-700">You are viewing Demo data. Ready to make this account yours?</span>
             </div>
             <Button 

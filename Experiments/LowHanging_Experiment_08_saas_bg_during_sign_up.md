@@ -1,11 +1,11 @@
 Experiment 07 -- Immersive SaaS Background in Sign-Up
 ====================================================
 
-Hypothesis - Create FOMO with a Product Background
+Hypothesis - Create End to End Sign Up flow with SaaS Background
 --------------------------------------------------
 
 By replacing the static background in the sign-up flow with a blurred, dynamic view of the actual product, we can create a sense of "fear of missing out" (FOMO) and immersion, making users feel closer to the product and more likely to complete the sign-up and payment steps.
-This idea comes purely from a successful experiment I ran at Miro increasing sign up successfully by 3% - I am just curious if we can replicate this success at TradeZella ;) 
+This idea comes purely from a successful experiment I ran at Miro increasing sign ups by 3% - I am just curious if we can replicate this success at TradeZella ;) 
 
 -   **Reach**: All new users entering the sign-up flow.
 
@@ -41,7 +41,7 @@ Inspired by patterns seen in other successful SaaS companies like Miro, we hypot
 ⚠️ Risks & Mitigation
 ---------------------
 
--   **Risk: Increased Page Load Time.** Video assets can be heavy and might slow down the initial page load, potentially causing some users to drop off before the form even appears.
+-   **Risk: Increased Page Load Time.** Image/Video assets can be heavy and might slow down the initial page load, potentially causing some users to drop off before the form even appears.
 
     -   **Mitigation:** We must aggressively optimize the background asset for file size and performance to ensure it has a negligible impact on load times.
 

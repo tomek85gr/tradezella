@@ -153,6 +153,13 @@ export default function PaywallOverlay({ onClose, onSubscribe }: PaywallOverlayP
               Yearly • Save 32%
             </Button>
           </div>
+          
+          {/* Money Back Guarantee */}
+          <div className="text-center mb-6">
+            <p className="text-sm font-semibold text-green-800 bg-green-100 px-3 py-1 rounded-full inline-block">
+              ✓ 14 days money back guarantee!
+            </p>
+          </div>
 
           {/* Plans Stack */}
           <div className="flex-1 space-y-4">

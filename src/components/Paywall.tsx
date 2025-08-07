@@ -129,7 +129,7 @@ export default function Paywall({ tradingLevel, onSubscribe, onDemo, onLogout }:
         </div>
         
         {/* Main Content */}
-        <div className="flex-1 max-w-6xl mx-auto px-6 py-8 pb-4 bg-transparent">
+        <div className="flex-1 max-w-6xl mx-auto px-6 py-8 pb-4 bg-white/90 backdrop-blur-sm rounded-lg">
           <div className="text-center">
             <h1 className="text-3xl font-bold text-gray-900 mb-2">
               Choose your subscription
@@ -198,9 +198,9 @@ export default function Paywall({ tradingLevel, onSubscribe, onDemo, onLogout }:
                       </div>
                     </div>
                     
-                    {/* Button moved above features */}
+                    {/* Subscribe Button */}
                     <Button
-                      className={`w-full mb-6 ${
+                      className={`w-full mb-3 ${
                         selectedPlan === plan.name
                           ? 'bg-[#4332EB] hover:bg-[#3a2bd4]'
                           : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -217,8 +217,8 @@ export default function Paywall({ tradingLevel, onSubscribe, onDemo, onLogout }:
                       {plan.features.map((feature, featureIndex) => (
                         <div key={featureIndex} className="flex items-start space-x-2">
                           {feature.included ? (
-                            <div className="w-4 h-4 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                              <span className="text-green-600 text-xs">✓</span>
+                            <div className="w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                              <span className="text-green-700 text-xs">✓</span>
                             </div>
                           ) : (
                             <div className="w-4 h-4 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
@@ -235,18 +235,25 @@ export default function Paywall({ tradingLevel, onSubscribe, onDemo, onLogout }:
                 </Card>
               ))}
             </div>
+            
+            {/* See it in action first button in new row */}
+            <div className="flex justify-center mb-4">
+              <Button
+                variant="outline"
+                onClick={onDemo}
+                className="text-gray-600 hover:text-gray-800 border-gray-300 hover:border-gray-400"
+              >
+                <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                See it in action first
+              </Button>
+            </div>
           </div>
         </div>
         
         {/* Action Buttons */}
         <div className="flex flex-col items-center space-y-4 pb-8">
-          <Button
-            variant="outline"
-            onClick={onDemo}
-            className="text-gray-600 hover:text-gray-800 border-gray-300 hover:border-gray-400"
-          >
-            See it in action first
-          </Button>
           <Button
             variant="ghost"
             onClick={onLogout}
