@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { X } from "lucide-react";
+import { useUrlParams } from "@/hooks/useUrlParams";
 
 interface PaywallOverlayProps {
   onClose: () => void;
@@ -12,6 +13,7 @@ interface PaywallOverlayProps {
 }
 
 export default function PaywallOverlay({ onClose, onSubscribe }: PaywallOverlayProps) {
+  const { hasParam } = useUrlParams();
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>('monthly');
   const [selectedPlan, setSelectedPlan] = useState('Basic');
   const [currentSlogan, setCurrentSlogan] = useState(0);
@@ -155,11 +157,13 @@ export default function PaywallOverlay({ onClose, onSubscribe }: PaywallOverlayP
           </div>
           
           {/* Money Back Guarantee */}
-          <div className="text-center mb-6">
-            <p className="text-sm font-semibold text-green-800 bg-green-100 px-3 py-1 rounded-full inline-block">
-              ✓ 14 days money back guarantee!
-            </p>
-          </div>
+          {hasParam('exp_money_back_guarantee', 'true') && (
+            <div className="text-center mb-6">
+              <p className="text-sm font-semibold text-green-800 bg-green-100 px-3 py-1 rounded-full inline-block">
+                ✓ 14 days money back guarantee!
+              </p>
+            </div>
+          )}
 
           {/* Plans Stack */}
           <div className="flex-1 space-y-4">
